@@ -18,12 +18,15 @@ namespace E_Com.infrastructure.Data.Config
 
             builder.Property(x => x.Description).IsRequired();
 
-            builder.Property(x => x.Price)
+            builder.Property(x => x.NewPrice)
                 .IsRequired()
                 .HasColumnType("decimal(18,2)");
+            builder.Property(x => x.OldPrice)
+               .IsRequired()
+               .HasColumnType("decimal(18,2)");
 
             builder.HasData(
-                new Product { Id = 1, Name = "Smartphone", Description = "Latest ", Price = 1, CategoryId = 1 }
+                new Product { Id = 1, Name = "Smartphone", Description = "Latest ", NewPrice = 1, CategoryId = 1 }
                
                
             );
