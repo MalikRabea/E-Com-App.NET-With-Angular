@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using E_Com.API.Helper;
 using E_Com.Core.DTO;
+using E_Com.Core.Entites.Product;
 using E_Com.Core.interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -74,6 +75,20 @@ namespace E_Com.API.Controllers
             try
             {
                 await work.ProductRepositry.UpdateAsync(updateProductDTO);
+                return Ok(new ResponseAPI(200));
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(new ResponseAPI(400, ex.Message));
+            }
+        }
+        [HttpDelete("delete-Product/{Id}")]
+        public async Task<IActionResult> delete(int Id)
+        {
+            try
+            {
+               var product = await work.ProductRepositry.GetByIdAsync(Id , x=>x.Photos , x=>x.Category);
+                await work.ProductRepositry.DeleteAsync(product);
                 return Ok(new ResponseAPI(200));
             }
             catch (Exception ex)
