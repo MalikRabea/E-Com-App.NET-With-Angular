@@ -20,5 +20,7 @@ namespace E_Com.Core.interfaces
         Task UpdateAsync(T entity);
 
         Task DeleteAsync(int id);
+
+        Task<int> CountAsync();
     }
 }

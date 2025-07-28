@@ -11,7 +11,7 @@ namespace E_Com.API.Middleware
         private readonly RequestDelegate _next;
         private readonly IHostEnvironment _environment;
         private readonly IMemoryCache _memoryCache;
-        private readonly TimeSpan _rateLimitWindow = TimeSpan.FromSeconds(30);
+        private readonly TimeSpan _rateLimitWindow = TimeSpan.FromSeconds(120);
 
         public ExceptionsMiddleware(RequestDelegate next, IHostEnvironment environment, IMemoryCache memoryCache)
         {
@@ -64,7 +64,7 @@ namespace E_Com.API.Middleware
 
             if (dateNow - timesTamp < _rateLimitWindow)
             {
-                if (count >= 8)
+                if (count >= 80)
                 {
                     return false;
                 }

@@ -3,6 +3,8 @@ using E_Com.API.Helper;
 using E_Com.Core.DTO;
 using E_Com.Core.Entites.Product;
 using E_Com.Core.interfaces;
+using E_Com.Core.Services;
+using E_Com.Core.Sharing;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -11,28 +13,26 @@ namespace E_Com.API.Controllers
 
     public class ProductsController : BaseController
     {
-        public ProductsController(IUnitOfWork work, IMapper mapper) : base(work, mapper)
+        private readonly IImageManagementService service;
+        public ProductsController(IUnitOfWork work, IMapper mapper , IImageManagementService service) : base(work, mapper)
         {
+            this.service = service;
         }
         [HttpGet("get-all")]
-        public async Task<IActionResult> get()
+        public async Task<IActionResult> get([FromQuery]ProductParams productParams)
         {
             try
             {
                 var Product = await work.ProductRepositry
-                    .GetAllAsync(x => x.Category, x => x.Photos);
-
-                var result = mapper.Map<List<ProductDTO>>(Product);
-                if (Product is null)
-                {
-                    return BadRequest(new ResponseAPI(400));
-                }
-                return Ok(result);
+                    .GetAllAsync(productParams);
+                var toalCount = await work.ProductRepositry
+                    .CountAsync();
+                return Ok(new Pagination<ProductDTO>(productParams.PageNumber,productParams.pageSize,toalCount, Product));
 
             }
             catch (Exception ex)
             {
-                return BadRequest(new ResponseAPI(400, ex.Message));
+                return BadRequest (ex.Message);
             }
         }
         [HttpGet("get-by-id/{id}")]
