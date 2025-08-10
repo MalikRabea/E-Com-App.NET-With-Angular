@@ -29,7 +29,7 @@ namespace E_Com.infrastructure.Repositries
         }
 
         
-           public async Task<IEnumerable<ProductDTO>> GetAllAsync(ProductParams productParams)
+           public async Task<ReturnProductDTO> GetAllAsync(ProductParams productParams)
         {
             var query = context.Products
                 .Include(m => m.Category)
@@ -66,14 +66,15 @@ namespace E_Com.infrastructure.Repositries
                 };
             }
 
-            //productParams.TotatlCount = query.Count();
+            ReturnProductDTO returnProductDTO = new ReturnProductDTO();
+            returnProductDTO.TotalCount = query.Count();
 
             query = query.Skip((productParams.pageSize) * (productParams.PageNumber - 1)).Take(productParams.pageSize);
 
 
-            var result = mapper.Map<List<ProductDTO>>(query);
+            returnProductDTO.products = mapper.Map<List<ProductDTO>>(query);
 
-            return result;
+            return returnProductDTO;
 
         }
 

@@ -41,11 +41,16 @@ namespace E_Com.API
             }
             app.UseCors("CORSPolicy");
             app.UseMiddleware<ExceptionsMiddleware>();
+            app.UseAuthentication();
+
+            app.UseAuthorization();
+
+
             app.UseStaticFiles();
             app.UseStatusCodePagesWithReExecute("/errors/{0}");
             app.UseHttpsRedirection();
 
-            app.UseAuthorization();
+           
 
 
             app.MapControllers();

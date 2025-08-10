@@ -14,5 +14,9 @@ namespace E_Com.Core.interfaces
 
         public IProductRepositry ProductRepositry { get; }
 
+        public ICustomerBasketRepository CustomerBasket { get; }
+
+        public IAuth Auth { get; }
+
     }
 }
