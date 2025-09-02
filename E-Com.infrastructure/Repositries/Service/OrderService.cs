@@ -42,7 +42,7 @@ namespace E_Com.infrastructure.Repositries.Service
 
                 // ⬅️ هنا تحديث عدد مرات البيع
                 product.SoldCount += item.Quantity;
-                _unitOfWork.ProductRepositry.UpdateAsync(product);
+                await _unitOfWork.ProductRepositry.UpdateAsync(product);
 
                 var orderItem = new OrderItem(
                     product.Id,

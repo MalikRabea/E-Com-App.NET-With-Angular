@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace E_Com.Core.Entites.Product
+namespace E_Com.Core.Entites.Products
 {
     public class Product : BaseEntity<int>
     {

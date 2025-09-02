@@ -1,6 +1,6 @@
 ﻿using E_Com.Core.DTO;
 using E_Com.Core.Entites;
-using E_Com.Core.Entites.Product;
+using E_Com.Core.Entites.Products;
 using E_Com.Core.interfaces;
 using E_Com.infrastructure.Data;
 using Microsoft.AspNetCore.Identity;

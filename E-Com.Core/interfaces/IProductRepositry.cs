@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using E_Com.Core.DTO;
-using E_Com.Core.Entites.Product;
+using E_Com.Core.Entites.Products;
 using E_Com.Core.Sharing;
 
 namespace E_Com.Core.interfaces

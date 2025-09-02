@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using E_Com.Core.Entites.Product;
+using E_Com.Core.Entites.Products;
 using Microsoft.AspNetCore.Http;
 
 namespace E_Com.Core.DTO

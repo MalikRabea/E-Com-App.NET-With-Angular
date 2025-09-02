@@ -6,7 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using E_Com.Core.Entites;
 using E_Com.Core.Entites.Order;
-using E_Com.Core.Entites.Product;
+using E_Com.Core.Entites.Products;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -33,12 +33,25 @@ namespace E_Com.infrastructure.Data
 
         public virtual DbSet<DeliveryMethod> DeliveryMethods { get; set; }
 
+        public virtual DbSet<Favorite> Favorites { get; set; }
+
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+            modelBuilder.Entity<Favorite>()
+                   .HasOne(f => f.User)
+                   .WithMany()
+                   .HasForeignKey(f => f.UserId);
+
+            modelBuilder.Entity<Favorite>()
+                .HasOne(f => f.Product)
+                .WithMany()
+                .HasForeignKey(f => f.ProductId);
 
         }
     }

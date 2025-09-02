@@ -1,6 +1,6 @@
 ﻿using AutoMapper;
 using E_Com.Core.DTO;
-using E_Com.Core.Entites.Product;
+using E_Com.Core.Entites.Products;
 
 namespace E_Com.API.Mapping
 {

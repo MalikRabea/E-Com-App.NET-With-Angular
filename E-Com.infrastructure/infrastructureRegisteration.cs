@@ -48,6 +48,8 @@ namespace E_Com.infrastructure
             services.AddScoped<IProductRepositry, ProductRepositry>();
             services.AddScoped<IProductService, ProductService>();
 
+            services.AddScoped<IFavoriteRepository, FavoriteRepository>();
+
             //apply Redis Connection
             services.AddSingleton<IConnectionMultiplexer>(i =>
             {
