@@ -1,12 +1,12 @@
 # 🛍️ Shop E-Commerce Backend
 
-This is the backend API for the **Shop E-Commerce Project**, built with **ASP.NET Core (.NET 9)** following **Clean Architecture** principles.  
+This is the backend API for the **Shop E-Commerce Project**, built with **ASP.NET Core (.NET 8)** following **Clean Architecture** principles.  
 It provides APIs for products, categories, basket, favorites, orders, checkout, and payment using **Stripe**.
 
 ---
 
 ## 🚀 Tech Stack
-- **ASP.NET Core (.NET 9)** – Web API
+- **ASP.NET Core (.NET 8)** – Web API
 - **Entity Framework Core** – ORM for SQL Server
 - **SQL Server** – Relational database
 - **Redis** – Basket caching
